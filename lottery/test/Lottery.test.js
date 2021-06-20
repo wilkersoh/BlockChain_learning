@@ -114,6 +114,7 @@ describe('Lottery Contract', () => {
     const difference = finalBalance - initialBalance;
     console.log('left over after cost gas will less than 2 ether:>> ', difference);
 
+    // toWei(value, value的type是什麼) 然後轉去 wei unit
     assert(difference > web3.utils.toWei('1.8', 'ether'));
   })
 });

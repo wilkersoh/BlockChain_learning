@@ -1,10 +1,16 @@
+/**
+  node deploy.js
+  or
+  yarn deploy
+*/
+require("dotenv").config(); // use for retrieve .env value
 const HDWalletProvider = require("truffle-hdwallet-provider");
 const Web3 = require("web3");
 const { interface, bytecode } = require("./compile");
 
 const provider = new HDWalletProvider(
-  process.env.PHRASE,
-  "https://rinkeby.infura.io/v3/bd524b000a274b75bb1d3de985a42cf6"
+  process.env.SEED_PHRASE,
+  process.env.RINKEBY_INFURA
 );
 const web3 = new Web3(provider);
 
@@ -17,6 +23,7 @@ const deploy = async () => {
     .deploy({ data: bytecode })
     .send({ gas: "1000000", from: accounts[0] });
 
+  console.log('interface :>> ', interface);
   console.log("Contract deployed to", result.options.address);
 };
 
