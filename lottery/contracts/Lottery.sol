@@ -5,6 +5,7 @@ contract Lottery {
     address[] public players;
 
     function Lottery() public {
+        // 第一個 deploy的 人 就是 manager
         manager = msg.sender;
     }
 
